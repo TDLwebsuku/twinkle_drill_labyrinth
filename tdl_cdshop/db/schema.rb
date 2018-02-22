@@ -12,13 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180221104110) do
 
-  create_table "admins", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "encrypted_password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
@@ -96,19 +90,6 @@ ActiveRecord::Schema.define(version: 20180221104110) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.string "zip_code"
-    t.string "address"
-    t.string "phone_number"
-    t.integer "delete_flag"
-    t.string "email"
-    t.string "encrypted_password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  
 
 end
