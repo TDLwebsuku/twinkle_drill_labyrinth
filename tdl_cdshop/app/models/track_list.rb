@@ -1,2 +1,0 @@
-class TrackList < ApplicationRecord
-end
