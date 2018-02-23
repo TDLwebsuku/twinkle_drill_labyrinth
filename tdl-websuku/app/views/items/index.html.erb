@@ -23,10 +23,10 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= link_to item.item_name, item_path %></td>
+        <td><%= link_to item.item_name, item_path(item) %></td>
         <td><%= item.price %></td>
         <td><%= item.artist_name %></td>
-        <td><%= item.item_image_id %></td>
+        <td><%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg' %></td>
         <td><%= item.category %></td>
         <td><%= item.label %></td>
         <td><%= item.admin_id %></td>
