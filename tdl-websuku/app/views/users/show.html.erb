@@ -1,0 +1,7 @@
+<h1>ユーザー名：<%= current_user.first_name %></h1>
+<%= render @orders %>
+<%= link_to "ユーザー情報の変更", edit_user_registration_path %>
+<% if admin_signed_in? %>
+	<%= link_to "このユーザーを削除する", user_registration_path, method: :delete, data_confirm: "本当に削除しますか？" %>
+<% end %>
+

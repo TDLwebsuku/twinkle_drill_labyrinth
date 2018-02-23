@@ -1,0 +1,7 @@
+<h1>ユーザー一覧</h1>
+
+<% @users.each do |user| %>
+	<div>
+		<%= link_to "#{user.last_name} #{user.first_name}さん", users_show_path(user) %>
+	</div>
+<% end %>
