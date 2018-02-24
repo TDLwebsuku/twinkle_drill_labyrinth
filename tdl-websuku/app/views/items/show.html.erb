@@ -1,3 +1,4 @@
+<% provide(:title, "商品詳細") %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -16,7 +17,6 @@
 </p>
 
 <p>
-  <strong>Item image:</strong>
   <%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg' %>
 </p>
 
