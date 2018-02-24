@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :price %>
-    <%= f.number_field :price, id: :item_price %>
+    <%= f.number_field :price, id: :item_price %>円
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= f.label :category %>
-    <%= f.number_field :category, id: :item_category %>
+    <%= f.select :category, Item.categories.keys.to_a %>
   </div>
 
   <div class="field">
@@ -53,7 +53,7 @@
 
   <div class="field">
     <%= f.label :is_available %>
-    <%= f.number_field :is_available, id: :item_is_available %>
+    <%= f.select :is_available, Item.is_availables.keys.to_a %>
   </div>
 
   <div class="field">
@@ -63,7 +63,7 @@
 
   <div class="field">
     <%= f.label :is_purchased %>
-    <%= f.number_field :is_purchased, id: :item_is_purchased %>
+    <%= f.select :is_purchased, Item.is_purchaseds.keys.to_a %>
   </div>
 
   <div class="actions">
