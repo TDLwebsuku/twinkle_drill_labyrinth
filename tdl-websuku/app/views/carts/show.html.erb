@@ -1,0 +1,30 @@
+<h1>ショッピングカート</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>商品</th>
+				<th>説明</th>
+				<th>個数</th>
+				<th>商品価格</th>
+				<th>商品合計</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>	
+					<td><%= @cart_item.item.item_name %></td>
+					<td><%= @cart_item.count %>個
+						<div>
+							<%= form_for [@cart_item.cart, @cart_item]  do |f| %>
+								<%= f.text_field :count %>個
+								<%= f.submit "個数を変更" %>
+							<% end %>
+						</div>
+					</td>
+					<td><%= @cart_item.item.price %>円</td>
+					<td><%= @cart_item.item.price * @cart_item.count %>円</td>
+					<td><%= link_to 'カートから削除', cart_cart_item_path(@cart_item.cart,cart_item),method: :delete %></td>
+				</tr>
+			
+		</tbody>
+	</table>
+		<p>合計金額</p>

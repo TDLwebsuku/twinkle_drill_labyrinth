@@ -55,5 +55,12 @@
   <%= @item.is_purchased %>
 </p>
 
+<%= form_tag("/add_item", method: "post") do %>
+  <div><%= hidden_field_tag :item_id,@item.id %></div>
+  <div><%= number_field_tag :count%>個</div>
+  <%= submit_tag "カートに追加" %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
