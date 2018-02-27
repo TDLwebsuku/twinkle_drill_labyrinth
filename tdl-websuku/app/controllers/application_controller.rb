@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   	else
   		@cart = Cart.create
   		session[:cart_id] = @cart.id
-  		@cart
+      @cart
   	end
   end
 
