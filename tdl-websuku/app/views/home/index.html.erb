@@ -1,2 +1,206 @@
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		list-style: none;
+		margin: 0;
+    	padding: 0;
+    	border: 0;
+    	font-size: 100%;
+    	font: inherit;
+    	vertical-align: baseline;
+	}
+
+	body {
+		width: 100%;
+	}
+
+	h1 {
+		width: 600px;
+    	margin: 120px auto;
+    	text-align: center;
+    	font-weight: normal;
+    	font-size: 35px;
+	}
+
+	.title {
+		float: right;
+		margin: 70px auto;
+		padding: 70px;
+    	font-weight: normal;
+    	font-size: 25px;
+    	width: 100%;
+	}
+
+	.items_index {
+		width: 600px;
+    	margin: 40px auto;
+    	text-align: center;
+    	font-weight: normal;
+    	font-size: 20px;
+    	text-decoration: none;
+	}
+
+	.portrait {
+		width: 100%;
+		height: 0 auto;
+		margin: 0 auto;
+		padding: 0 auto;
+		border: 0 auto;
+	}
+
+	.a_conteiner {
+		background: linear-gradient(45deg, #000046, #000046 20%, #1cb5e0);
+		padding: 0 auto;
+		width: 100%;
+		height: 500px;
+	}
+	
+	.b_conteiner {
+		background:radial-gradient(#e1eec3,  #f05053);
+		padding: 0 auto;
+		width: 100%;
+		height: 500px;
+	}
+	
+	.c_conteiner {
+		background:radial-gradient(#fffc00,  #ffffff);
+		padding: 0 auto;
+		width: 100%;
+		height: 500px;
+	}
+	
+	.d_conteiner {
+		background: linear-gradient(45deg, #c0c0aa, #c0c0aa 20%, #1cefff);
+		padding: 0 auto;
+		width: 100%;
+		height: 500px;
+	}
+	
+	.e_conteiner {
+		background: linear-gradient(45deg, #ef32d9, #ef32d9 20%, #89fffd);
+		padding: 0 auto;
+		width: 100%;
+		height: 500px;
+	}
+	
+	.right_image{
+		float: right;
+		width: 50%;
+		padding: 20px;
+	}
+	
+	.left_image{
+		float: left;
+		width: 50%;
+		padding: 20px;
+	}
+	
+	p {
+		float: right;
+		width: 50%;
+		font-size: 23px;
+		font-weight: normal;
+		flood-color: white;
+		line-height: 150%;
+		text-align: center;
+		margin-top: 150px; 
+
+	}
+	.btn{
+		display: inline-block;
+		text-decoration: none;
+		color: #668ad8;
+		width: 120px;
+		height: 120px;
+		line-height: 120px;
+		border-radius: 50%;
+		border: solid 2px #668ad8;
+		text-align: center;
+		vertical-align: middle;
+		overflow: hidden;
+		font-weight: normal;
+		transition: .4s;
+	}
+
+	.btn:hover {
+    	background: #b3e1ff;
+	}
+
+</style>
+
+<!-- html -->
+
 <% provide(:title, "トップ") %>
-<%= link_to "商品一覧", items_path %>
+
+<!-- なんかのキャッチコピーあとでかく -->
+<h1>「CD」を販売する</h1>
+
+<div class="title">
+	Rock × Heavy metal × JAZZ × Pop × Reggae
+</div>
+
+
+<!-- 商品一覧のリンクのスタイルがこうしないとできなかった -->
+<div class="items_index">
+	<%= link_to '商品一覧', items_path, class: "btn btn-large", id: "btn" %>
+</div>
+
+<!-- ここから写真とコメント -->
+<section class="portrait">
+
+<div class="a_conteiner">
+	<div class="left_image">
+		<img src="<%= asset_path "music_photo/a.jpg" %>" alt="" width="100%" height="400" />
+	</div>
+		<div class="right_comment">
+			<p>こんな時代だからこそ、<br>
+		　　CDを買うことに意味がある</p>
+		</div>	
+</div>
+
+<div class="b_conteiner">
+	<div class="right_image">		
+		<img src="<%= asset_path "music_photo/b.jpg" %>" alt="" width="100%" height="400" />
+	</div>	
+		<div class="left_comment">
+			<p>CDはあなたの音楽環境に合わせて<br>
+			　　カスタムして楽しむことができます</p>
+		</div>
+</div>
+
+
+<div class="c_conteiner">
+	<div class="left_image">
+		<img src="<%= asset_path "music_photo/c.jpg" %>" alt="" width="100%" height="400" />
+	</div>
+		<div class="right_comment">
+			<p>今は充実している定額サービス<br>
+			　（アマゾンプライム、AppleMusic）も、<br>
+			　ある日突然終了する可能性は否定できません</p>
+		</div>
+</div>
+
+<div class="d_conteiner">
+	<div class="right_image">
+		<img src="<%= asset_path "music_photo/d.jpg" %>" alt="" width="100%" height="400" />
+	</div>
+		<div class="left_comment">
+			<p>CDはあなたの音楽環境に合わせてカスタムして<br>
+			　　楽しむことができます</p>
+		</div>
+</div>
+
+<div class="e_conteiner">
+	<div class="left_image">
+		<img src="<%= asset_path "music_photo/e.jpg" %>" alt="" width="100%" height="400" />
+	</div>
+		<div class="right_comment">
+			<p>CDを買うなんて<br>
+				一見手間ばかりでめんどくさい極みですが、<br>
+			　　この手間そのものが音楽を楽しむ行為そのもの</p>
+		</div>
+</div>
+
+</section>
