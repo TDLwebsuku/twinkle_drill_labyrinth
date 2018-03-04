@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   post '/add_item' => 'carts#add_item'
   post '/update_item' => 'carts#update_item'
   delete '/delete_item' => 'carts#delete_item'
-  post '/confirm_order' => 'orders#confirm_order'
+  post '/confirm_order' => 'order_items#confirm_order'
 end

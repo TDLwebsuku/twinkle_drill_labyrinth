@@ -14,20 +14,10 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
   end
 
-  # カート詳細画面から、「購入画面に進む」を押した時のアクション
-  def confirm_order
-    if @order_item.blank?
-      @order_item = current_order.order_items.build(item_id: params[:item_id])
-    end
-    @order_item.count = params[:count].to_i
-    @order_item.save
-    redirect_to new_order_path
-  end
-
   # GET /orders/new
   def new
     @order = current_order
-    @cart_items = Cart.find_by(user_id: current_user.id).cart_items
+    @order_items = OrderItem.where(order_id: current_order.id)
   end
 
   # GET /orders/1/edit
@@ -44,15 +34,15 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         @order.update(is_purchased: 1)
-        @cart = Cart.find_by(user_id: @order.user_id).destroy
+        Cart.find_by(user_id: @order.user_id).destroy
         @order.order_items.each do |order_item|
           @item = Item.find_by(id: order_item.item_id)
           @item.update(stock: @item.stock - order_item[:count])
         end
-
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
+        @order.destroy
         format.html { redirect_to items_path }
       end
     end

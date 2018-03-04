@@ -12,6 +12,23 @@ class OrderItemsController < ApplicationController
   def show
   end
 
+  # カート詳細画面から、「購入画面に進む」を押した時のアクション
+  def confirm_order
+    @cart_items = CartItem.find(params[:cart_item_id])
+    @cart_items.each do |cart_item|
+      OrderItem.create(
+                      order_id: current_order.id, 
+                      item_id: cart_item.item_id, 
+                      item_name: cart_item.item.item_name, 
+                      price: cart_item.item.price, 
+                      artist_name: cart_item.item.artist_name, 
+                      label: cart_item.item.label, 
+                      count: cart_item.count
+                      )
+    end
+    redirect_to new_order_path
+  end
+
   # GET /order_items/new
   def new
     @order_item = OrderItem.new
@@ -69,6 +86,6 @@ class OrderItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_item_params
-      params.require(:order_item).permit(:order_id, :item_id, :count, :item_name, :price, :artist_name, :label)
+      params.require(:order_item).permit(:order_id, :item_id, :count, :item_name, :price, :artist_name, :label, :cart_item_id)
     end
 end

@@ -32,8 +32,7 @@
 	<h2>合計金額：<%= total_price %>円</h2>
 	<%= form_tag('/confirm_order', method: 'post') do %>
 		<% @cart_items.each do |cart_item| %>
-			<%= hidden_field_tag :item_id, cart_item.item_id %>
-			<%= hidden_field_tag :count, cart_item.count %>
+			<%= hidden_field_tag 'cart_item_id[]', cart_item.id %>
 		<% end %>
 		<%= submit_tag "購入画面に進む" %>
 	<% end %>
