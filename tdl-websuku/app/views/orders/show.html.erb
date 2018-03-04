@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>User:</strong>
-  <%= @order.user_id %>
+  <%= "#{@order.user.last_name} #{@order.user.first_name} 様" %>
+</p>
+
+<p>
+  <strong>User(カナ):</strong>
+  <%= "#{@order.user.last_name_kana} #{@order.user.first_name_kana} 様" %>
 </p>
 
 <p>
   <strong>Total price:</strong>
-  <%= @order.total_price %>
+  <%= @order.total_price %>円
 </p>
 
 <p>
@@ -25,10 +29,6 @@
   <%= @order.phone_number %>
 </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @order.last_name %>
-</p>
 
 <p>
   <strong>First name:</strong>

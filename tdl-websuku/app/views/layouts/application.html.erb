@@ -12,8 +12,10 @@
   	<header>
   		<%= link_to "ロゴ", items_path %> | 
   		<% if user_signed_in? %>
-  			<%= link_to "マイページ", "/users/#{current_user.id}" %>
+  			<%= link_to "マイページ", "/users/#{current_user.id}" %> | 
+        <%= link_to "カート一覧", current_cart %> | 
   			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        | ようこそ！<%= current_user.last_name %>さん！
   		<% elsif admin_signed_in? %>
   			<%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
   		<% else %>

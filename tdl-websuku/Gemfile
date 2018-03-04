@@ -33,10 +33,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # 追加分
+
 # 会員登録のgem
 gem 'devise'
 # rails consoleをpryで開くgem
 gem 'pry-rails'
+# 初期データ投入用gem
+gem 'seed-fu'
 # 画像保存用
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'

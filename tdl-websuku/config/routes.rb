@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :order_items
   resources :orders
   resources :items
-  post '/add_item' => 'carts#add_item'
   resources :carts, only: [:show] 
   resources :cart_items, only: [:update, :destroy]
   devise_for :admins
@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'users/index'
   get 'users/:id' => 'users#show', as: 'user' #マイページ
+  post '/add_item' => 'carts#add_item'
+  post '/update_item' => 'carts#update_item'
   delete '/delete_item' => 'carts#delete_item'
+  post '/confirm_order' => 'orders#confirm_order'
 end

@@ -4,40 +4,40 @@
   <strong>金額:</strong><%= cart_item.item.price %>円
 <% end %>
 <strong>合計金額：<%= total_price %>円</strong>
-<%= form_for @order, url: orders_path, :html => {:method => 'post'} do |f| %>
+<%= form_tag('/orders', method: 'post') do %>
   <div class="field">
     <p>郵便番号</p>
-    <%= f.text_field :zip_code %>
+    <%= text_field_tag :zip_code %>
   </div>
 
   <div class="field">
     <p>住所</p>
-    <%= f.text_field :address %>
+    <%= text_field_tag :address %>
   </div>
 
   <div class="field">
     <p>phone_number</p>
-    <%= f.text_field :phone_number %>
+    <%= text_field_tag :phone_number %>
   </div>
 
   <div class="field">
     <p>last_name</p>
-    <%= f.text_field :last_name, :value => current_user.last_name %>
+    <%= text_field_tag :last_name, current_user.last_name %>
   </div>
 
   <div class="field">
     <p>first_name</p>
-    <%= f.text_field :first_name, :value => current_user.first_name %>
+    <%= text_field_tag :first_name, current_user.first_name %>
   </div>
 
   <div class="field">
     <p>last_name_kana</p>
-    <%= f.text_field :last_name_kana, :value => current_user.last_name_kana %>
+    <%= text_field_tag :last_name_kana, current_user.last_name_kana %>
   </div>
 
   <div class="field">
     <p>first_name_kana</p>
-    <%= f.text_field :first_name_kana, :value => current_user.first_name_kana %>
+    <%= text_field_tag :first_name_kana, current_user.first_name_kana %>
   </div>
-    <%= f.submit "購入画面に進む" %>
+    <%= submit_tag "購入画面に進む" %>
 <% end %>

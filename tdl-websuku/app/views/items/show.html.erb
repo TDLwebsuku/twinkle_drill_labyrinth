@@ -31,33 +31,13 @@
 </p>
 
 <p>
-  <strong>Admin:</strong>
-  <%= @item.admin_id %>
-</p>
-
-<p>
   <strong>Stock:</strong>
   <%= @item.stock %>
 </p>
 
-<p>
-  <strong>Is available:</strong>
-  <%= @item.is_available %>
-</p>
-
-<p>
-  <strong>Delete flag:</strong>
-  <%= @item.delete_flag %>
-</p>
-
-<p>
-  <strong>Is purchased:</strong>
-  <%= @item.is_purchased %>
-</p>
-
 <%= form_tag('/add_item', method: 'post') do %>
   <div><%= hidden_field_tag :item_id, @item.id %></div>
-  <div><%= text_field_tag :count %>個</div>
+  <div><%= number_field_tag :count, nil, in: 1..@item.stock %>個</div>
   <%= submit_tag "カートに追加" %>
 <% end %>
 

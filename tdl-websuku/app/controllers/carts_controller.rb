@@ -3,11 +3,6 @@ class CartsController < ApplicationController
 
 	def show
 		@cart_items = current_cart.cart_items
-		@total_price = 0
-		current_cart.cart_items.each do |e|
-			@total_price += e.item.price.to_i * e.count.to_i
-		end
-		@total_price
 	end
 
 	# 商品詳細画面から、「商品をカートに入れる」を押した時のアクション
@@ -15,7 +10,6 @@ class CartsController < ApplicationController
 		if @cart_item.blank?
 			@cart_item = current_cart.cart_items.build(item_id: params[:item_id])	
 		end
-
 		@cart_item.count += params[:count].to_i
 		if @cart_item.save
 			redirect_to current_cart
@@ -25,7 +19,14 @@ class CartsController < ApplicationController
 		end
 	end
 
+	def update_item
+		@cart_item = CartItem.find_by(item_id: params[:item_id], cart_id: params[:cart_id])
+		@cart_item.update(count: params[:count].to_i)
+		redirect_to current_cart
+	end
+
 	def delete_item
+		@cart_item = CartItem.find_by(item_id: params[:item_id], cart_id: params[:cart_id])
 		@cart_item.destroy
 		redirect_to current_cart
 	end
