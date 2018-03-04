@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :setup_order_item!, only: [:confirm_order]
   before_action :authenticate_user!, only: [:edit, :create, :destroy]
 
   # GET /orders
@@ -11,11 +11,23 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find_by(id: params[:id])
+  end
+
+  # カート詳細画面から、「購入画面に進む」を押した時のアクション
+  def confirm_order
+    if @order_item.blank?
+      @order_item = current_order.order_items.build(item_id: params[:item_id])
+    end
+    @order_item.count = params[:count].to_i
+    @order_item.save
+    redirect_to new_order_path
   end
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = current_order
+    @cart_items = Cart.find_by(user_id: current_user.id).cart_items
   end
 
   # GET /orders/1/edit
@@ -25,29 +37,23 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_order
+    @order.update(order_params)
+    @order.total_price = total_price
 
     respond_to do |format|
       if @order.save
+        @order.update(is_purchased: 1)
+        @cart = Cart.find_by(user_id: @order.user_id).destroy
+        @order.order_items.each do |order_item|
+          @item = Item.find_by(id: order_item.item_id)
+          @item.update(stock: @item.stock - order_item[:count])
+        end
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
-  def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.html { redirect_to items_path }
       end
     end
   end
@@ -64,12 +70,14 @@ class OrdersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
+    def setup_order_item!
+      @order_item = current_order.order_items.find_by(item_id: params[:item_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :total_price, :zip_code, :address, :phone_number, :last_name, :first_name, :last_name_kana, :first_name_kana)
+      params.require(:order).permit(:zip_code, :address, :phone_number, :last_name, :first_name, :last_name_kana, :first_name_kana)
     end
+
+
 end

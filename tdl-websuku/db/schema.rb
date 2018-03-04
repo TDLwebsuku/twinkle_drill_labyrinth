@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227105308) do
+ActiveRecord::Schema.define(version: 20180304094903) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20180227105308) do
     t.integer "stock"
     t.integer "is_available"
     t.integer "delete_flag"
-    t.integer "is_purchased"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,13 +77,15 @@ ActiveRecord::Schema.define(version: 20180227105308) do
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_id"
-    t.integer "count"
     t.string "item_name"
     t.integer "price"
     t.string "artist_name"
     t.string "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count", default: 0
+    t.index ["item_id"], name: "index_order_items_on_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180227105308) do
     t.string "first_name_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "is_purchased", default: 0
   end
 
   create_table "track_lists", force: :cascade do |t|
