@@ -1,34 +1,40 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide(:title, "会員情報編集") %>
+<h2>会員情報の編集</h2>
 <% if admin_signed_in? %>
   <%= form_for(User.find_by(id: params[:user_id]), as: :user, url: registration_path(:user), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <p>性</p>
+    <%= f.text_field :last_name, placeholder: "" %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <p>性（カナ）</p>
+    <%= f.text_field :last_name_kana, placeholder: "" %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+  <p>名</p>
+    <%= f.text_field :first_name, placeholder: "" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <p>名（かな）</p>
+    <%= f.text_field :first_name_kana, placeholder: "" %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+  <p>メールアドレス</p>
+    <%= f.email_field :email, placeholder: "" %>
+
+  <p>郵便番号</p>
+    <%= f.text_field :zip_code, placeholder: "" %>
+
+  <p>住所</p>
+    <%= f.text_field :address, placeholder: "" %>
+
+  <p>電話番号</p>
+    <%= f.text_field :phone_number, placeholder: "" %>
+
+  <p>新しいパスワード</p>
+    <%= f.password_field :password, placeholder: "6文字以上で入力してください" %>
+
+  <p>新しいパスワード（確認）</p>
+    <%= f.password_field :password_confirmation, placeholder: "6文字以上で入力してください" %>
+
+  <p>現在のパスワード</p>
+  <%= f.password_field :current_password, autocomplete: "off", placeholder: "現在のパスワードを入力してください" %>
 
   <%= hidden_field_tag :user_id, User.find_by(id: params[:user_id]).id %>
 
@@ -36,47 +42,47 @@
     <%= f.submit "Update" %>
   </div>
 <% end %>
-<% else %>
+<% elsif user_signed_in? %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <p>性</p>
+    <%= f.text_field :last_name, placeholder: "" %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <p>性（カナ）</p>
+    <%= f.text_field :last_name_kana, placeholder: "" %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+  <p>名</p>
+    <%= f.text_field :first_name, placeholder: "" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <p>名（かな）</p>
+    <%= f.text_field :first_name_kana, placeholder: "" %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+  <p>メールアドレス</p>
+    <%= f.email_field :email, placeholder: "" %>
+
+  <p>郵便番号</p>
+    <%= f.text_field :zip_code, placeholder: "" %>
+
+  <p>住所</p>
+    <%= f.text_field :address, placeholder: "" %>
+
+  <p>電話番号</p>
+    <%= f.text_field :phone_number, placeholder: "" %>
+
+  <p>新しいパスワード</p>
+    <%= f.password_field :password, placeholder: "6文字以上で入力してください" %>
+
+  <p>新しいパスワード（確認）</p>
+    <%= f.password_field :password_confirmation, placeholder: "6文字以上で入力してください" %>
+
+  <p>現在のパスワード</p>
+  <%= f.password_field :current_password, autocomplete: "off", placeholder: "現在のパスワードを入力してください" %>
 
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
 <% end %>

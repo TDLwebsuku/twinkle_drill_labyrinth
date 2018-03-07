@@ -7,6 +7,7 @@
 		item.category = 1
 		item.label = "TDL"
 		item.admin_id = 1
+		item.genres = 1
     item.stock = 100
     item.is_available = 0
     item.delete_flag = 0
