@@ -48,6 +48,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = Order.find_by(id: params[:order_id])
+    @order.update(order_params)
+    redirect_to order_path(@order)
+  end
+
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
@@ -66,7 +72,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:zip_code, :address, :phone_number, :last_name, :first_name, :last_name_kana, :first_name_kana)
+      params.require(:order).permit(:zip_code, :address, :phone_number, :last_name, :first_name, :last_name_kana, :first_name_kana, :is_purchased)
     end
 
 

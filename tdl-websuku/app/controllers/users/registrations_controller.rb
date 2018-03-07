@@ -20,9 +20,39 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    if admin_signed_in?
+      self.resource = User.find_by(id:params[:user_id])
+      resource_updated = update_resource(resource, account_update_params)
+      yield resource if block_given?
+      if resource_updated
+        bypass_sign_in resource, scope: resource_name
+        respond_with resource, location: after_update_path_for(resource)
+      else
+        clean_up_passwords resource
+        set_minimum_password_length
+        respond_with resource
+      end
+    else
+      self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+      prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+      resource_updated = update_resource(resource, account_update_params)
+      yield resource if block_given?
+      if resource_updated
+        if is_flashing_format?
+          flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+            :update_needs_confirmation : :updated
+          set_flash_message :notice, flash_key
+        end
+        bypass_sign_in resource, scope: resource_name
+        respond_with resource, location: after_update_path_for(resource)
+      else
+        clean_up_passwords resource
+        set_minimum_password_length
+        respond_with resource
+      end
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -45,6 +75,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(
       :sign_up, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, 
         :zip_code, :address, :phone_number])
+  end
+
+  def authenticate_scope!
+    unless admin_signed_in?
+      send(:"authenticate_#{resource_name}!", force: true)
+      self.resource = send(:"current_#{resource_name}")
+    end
   end
 
   # If you have extra params to permit, append them to the sanitizer.

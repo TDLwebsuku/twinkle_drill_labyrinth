@@ -32,14 +32,22 @@
 
 <p>
   <strong>Stock:</strong>
-  <%= @item.stock %>
+  <% if @item.stock == 0 %>
+    <strong>在庫切れ！</strong>
+  <% else %>
+    <%= @item.stock %>
+    <% if user_signed_in? %>
+      <%= form_tag('/add_item', method: 'post') do %>
+        <div><%= hidden_field_tag :item_id, @item.id %></div>
+        <div><%= number_field_tag :count, nil, in: 0..@item.stock %>個</div>
+        <%= submit_tag "カートに追加" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
 </p>
 
-<%= form_tag('/add_item', method: 'post') do %>
-  <div><%= hidden_field_tag :item_id, @item.id %></div>
-  <div><%= number_field_tag :count, nil, in: 1..@item.stock %>個</div>
-  <%= submit_tag "カートに追加" %>
-<% end %>
+
 
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

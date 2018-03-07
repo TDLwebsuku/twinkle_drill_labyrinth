@@ -1,49 +1,28 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>User:</strong>
-  <%= "#{@order.user.last_name} #{@order.user.first_name} 様" %>
+
+<h1>購入履歴</h1>
+<h2>購入者：<%= @order.last_name %> <%= @order.first_name %> 様</h2>
+<h2>購入日：<%= @order.updated_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[@order.updated_at.wday]})")  %></h2>
+<h2>合計金額：<%= @order.total_price %>円</h2>
+  <% @order.order_items.each do |order_item| %>
+  <p><%= attachment_image_tag Item.find_by(id: order_item.item_id), :item_image, :fill, 300, 300, format: 'jpeg' %>
+    <p>商品名：<%= order_item.item_name %></p>
+    <p>購入枚数：<%= order_item.count %>枚</p>
+    <p>金額：<%= order_item.price %>円</p>
+    <h3>小計：<%= order_item.price * order_item.count %>円</h3>
+    ーーーーーーーーーーーーーーーーーーーーー
+  <% end %>
+<h2>送付先住所</h2>
+<p>〒<%= @order.zip_code %></p>
+<p><%= @order.address %></p>
+<% if admin_signed_in? %>
+  <%= form_for(@order) do |f| %>
+    <%= hidden_field_tag :order_id, @order.id %>
+    <%= f.select :is_purchased, Order.is_purchaseds.keys.to_a %>
+    <%= submit_tag "発送状況の変更" %>
+  <% end %>
+<% end %>
+<p>発送状況：<%= @order.is_purchased %></p>
+
 </p>
-
-<p>
-  <strong>User(カナ):</strong>
-  <%= "#{@order.user.last_name_kana} #{@order.user.first_name_kana} 様" %>
-</p>
-
-<p>
-  <strong>Total price:</strong>
-  <%= @order.total_price %>円
-</p>
-
-<p>
-  <strong>Zip code:</strong>
-  <%= @order.zip_code %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @order.phone_number %>
-</p>
-
-
-<p>
-  <strong>First name:</strong>
-  <%= @order.first_name %>
-</p>
-
-<p>
-  <strong>Last name kana:</strong>
-  <%= @order.last_name_kana %>
-</p>
-
-<p>
-  <strong>First name kana:</strong>
-  <%= @order.first_name_kana %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>

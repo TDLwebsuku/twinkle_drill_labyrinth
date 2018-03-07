@@ -11,5 +11,4 @@ User.seed_once(:id) do |user|
   user.address = "渋谷区"
   user.phone_number = "123-4567-8901"
   user.delete_flag = 0
-	user.id = 1
 end

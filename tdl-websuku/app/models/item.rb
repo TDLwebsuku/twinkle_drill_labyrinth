@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+	# gem paranoiaのため
+  acts_as_paranoid
+  
 	has_many :track_lists
 	has_many :item_genres
 	has_many :order_items

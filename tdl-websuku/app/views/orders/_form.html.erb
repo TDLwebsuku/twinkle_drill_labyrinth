@@ -39,5 +39,5 @@
     <p>first_name_kana</p>
     <%= f.text_field :first_name_kana, :value => current_user.first_name_kana %>
   </div>
-    <%= f.submit "購入画面に進む" %>
+    <%= f.submit "購入を確定する", data: { confirm: "購入を確定します。よろしいですか？"}  %>
 <% end %>
