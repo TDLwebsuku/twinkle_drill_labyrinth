@@ -1,6 +1,4 @@
 <% provide(:title, "商品一覧") %>
-<p id="notice"><%= notice %></p>
-
 <h1>Items</h1>
 <%= search_form_for @search do |f| %>
   <div class="form-group">
@@ -10,7 +8,7 @@
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
-
+<%= paginate @items %>
 <table>
   <thead>
     <tr>
@@ -20,6 +18,7 @@
       <th>Item image</th>
       <th>Category</th>
       <th>Label</th>
+      <th>Genres</th>
       <th>Stock</th>
       <th colspan="3"></th>
     </tr>
@@ -34,20 +33,13 @@
         <td><%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg' %></td>
         <td><%= item.category %></td>
         <td><%= item.label %></td>
+        <td><%= item.genres %></td>
         <% if item.stock == 0 %>
           <td>売り切れ！</td>
         <% else %>
           <td><%= item.stock %></td>
         <% end %>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-<% if admin_signed_in? %>
-  <%= link_to 'New Item', new_item_path %>
-<% end %>

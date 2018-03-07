@@ -22,11 +22,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     if admin_signed_in?
+      @admin = current_admin
       self.resource = User.find_by(id:params[:user_id])
       resource_updated = update_resource(resource, account_update_params)
       yield resource if block_given?
       if resource_updated
-        bypass_sign_in resource, scope: resource_name
+        sign_in(@admin, :bypass => true)
         respond_with resource, location: after_update_path_for(resource)
       else
         clean_up_passwords resource

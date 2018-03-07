@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307042007) do
+ActiveRecord::Schema.define(version: 20180307104228) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,19 +46,6 @@ ActiveRecord::Schema.define(version: 20180307042007) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.string "genre_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "item_genres", force: :cascade do |t|
-    t.integer "iten_id"
-    t.integer "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", force: :cascade do |t|
     t.string "item_name"
     t.integer "price"
@@ -73,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180307042007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.integer "genres"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -105,10 +93,11 @@ ActiveRecord::Schema.define(version: 20180307042007) do
   end
 
   create_table "track_lists", force: :cascade do |t|
-    t.integer "item_id"
     t.string "track_name"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_track_lists_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|
