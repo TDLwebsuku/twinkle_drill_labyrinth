@@ -1,6 +1,4 @@
 <% provide(:title, "商品詳細") %>
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Item name:</strong>
   <%= @item.item_name %>
@@ -30,6 +28,17 @@
   <%= @item.label %>
 </p>
 
+<p>
+  <strong>Genres:</strong>
+  <%= @item.genres %>
+</p>
+
+<p>
+  <strong>Tracklists:</strong>
+  <% @item.track_lists.each do |track_list| %>
+    <%= track_list.track_name %>
+  <% end %>
+</p>
 <p>
   <strong>Stock:</strong>
   <% if @item.stock == 0 %>

@@ -1,0 +1,9 @@
+<div class="field">
+	<%= f.label '曲名' %><br>
+	<%= f.text_field :track_name %>
+	<% if @item.persisted? %>
+		<%= f.label '削除' %>
+		<%= f.check_box :_destroy %>
+	<% end %>
+	<br>
+</div>

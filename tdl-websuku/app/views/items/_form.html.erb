@@ -42,6 +42,20 @@
   </div>
 
   <div class="field">
+    <%= f.label :genres %>
+    <%= f.select :genres, Item.genres.keys.to_a %>
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :track_lists do |track_list| %>
+      <%= render 'track_list_fields', f: track_list %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= link_to_add_association '追加', f, :track_lists, data: { association_insertion_method: 'before' } %>
+  </div>
+
+  <div class="field">
     <%= f.label :stock %>
     <%= f.number_field :stock, id: :item_stock %>
   </div>
