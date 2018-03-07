@@ -40,6 +40,10 @@ gem 'devise'
 gem 'pry-rails'
 # 初期データ投入用gem
 gem 'seed-fu'
+# 論理削除のgem, 論理削除するにはmodel.destroy 物理削除するにはmodel.really_destroy!
+gem 'paranoia'
+# 検索機能のgem
+gem 'ransack'
 # 画像保存用
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'

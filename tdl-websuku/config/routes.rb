@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   post '/update_item' => 'carts#update_item'
   delete '/delete_item' => 'carts#delete_item'
   post '/confirm_order' => 'order_items#confirm_order'
+  delete '/user_destroy' => 'admin#user_destroy'
+  post '/user_edit' => 'admin#user_edit'
 end
