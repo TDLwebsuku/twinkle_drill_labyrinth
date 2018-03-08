@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  
+<%= stylesheet_link_tag "for_category/giraffe", :media => "all" %>
+<%= stylesheet_link_tag "for_category/bootstrap", :media => "all" %>
+<%= stylesheet_link_tag "for_category/bootstrap-responsive", :media => "all" %>
+<%= stylesheet_link_tag "for_category/bootstrap-ds2", :media => "all" %>
+<%= stylesheet_link_tag "for_category/bootstrap-ds2-responsive", :media => "all" %>
+</head>
+<body>
+
+
+
+
+<div class="container">
+
+      <div id="head-bar">
+        <!--ブランドロゴ-->
+                <h1 id="h1-logo-pc">
+                    <a class="" href="/">
+                                                        
+                    </a>
+        </h1>
+                <!--ログイン名-->
+        <div class="utility-nav-box visible-desktop">
+          <ul class="inline utility-nav menu-pc-option">
+                      <li class="menu-price ie-br">
+              <span>0点</span>
+              <a href="/cart/index">0円 </a>
+              <img src="/assets/images/icon_cart.png" alt="">
+            </li>
+            <li class="menu-login ie-br">
+              <a href="/customer/register">新規会員登録</a>
+              <img src="/assets/images/icon_user.png" alt="">
+            </li>
+            <li class="menu-login ie-br">
+              <a href="/login">ログイン</a>
+              <img src="/assets/images/icon_key.png" alt="">
+            </li>
+          
+            <li class="menu-search">
+              <ul class="search-wrap unstyled">
+                <li class="menu-search-form">
+                  <form class="navbar-form search" method="GET" action="/item/search/id/search/name/search">
+                    <input class="span3 search-text" type="text" name="keyword" onblur="if (this.value == '') this.value = 'キーワード検索';" onfocus="if (this.value == 'キーワード検索') this.value = '';" value="キーワード検索">
+                    <button type="submit" class="btn btn-primary search-buttom">
+                      <img src="/assets/images/icon_search.jpg" alt="" class="hiddne-phone">
+            <img src="/assets/images/icon_search_smp.png" alt="" class="visible-phone">
+                    </button>
+                  </form>
+                </li>
+                <li class="menu-search-button">
+                  <div class="refine-search">
+                    <a class="btn search-buttom-plus" href="/search">
+                      <img onmouseover="document.all.item('moji2').style.visibility='visible'" onmouseout="document.all.item('moji2').style.visibility='hidden'" src="/assets/images/icon_plus.jpg" alt="">
+                    </a>
+                    <span id="moji2">詳細検索ができます</span>
+                  </div>
+              </li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+                <!--SMP用ヘッダーメニュー-->
+        <ul class="utility-nav-sp hidden-desktop">
+            <li><a href="https://www.facebook.com/giraffetie" target="_blank"><img src="/assets/images/icon_sp_facebook.jpg" alt="facebook"></a></li>
+            <li><a href="https://twitter.com/giraffe_tie" target="_blank"><img src="/assets/images/icon_sp_twitter.jpg" alt="twitter"></a></li>
+            <li>
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <img src="/assets/images/icon_sp_menu.jpg" alt="">
+                </button>
+            </li>
+        </ul>
+
+      </div><!-- /head-bar -->
+
+        <div class="nav-collapse collapse nav-bottom">
+          <!--グローバルナビ-->
+          <div id="head-navi">
+            <div class="center-part">
+              <ul class="nav">
+                <!--PC用-->
+                <li class="visible-desktop">
+                  <ul class="nav">
+                    
+
+
+
+
+  <li class="dropdown pulldown00  menu-close clickable">
+    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <img src="/assets/images/icon_sp_menu_close.jpg" alt="">
+    </button>
+  </li>
+
+  <li class="dropdown pulldown01  clickable"><a id="drop1" href="/item/new_arrival"><div class="Arbutus">New Item</div><span>新製品</span></a></li>
+
+  <li class="dropdown pulldown02 visible-phone  clickable"><a id="drop2" href="/shop/giraffe/item/list/category_id/0"><div class="Arbutus">ALL Item</div><span>全ての商品</span></a></li>
+
+  <li class="dropdown pulldown03  clickable"><a id="drop3" href="/shop/giraffe/item/list/category_id/1" role="button" class="dropdown-toggle" data-toggle="dropdown"><div class="Arbutus">Necktie</div><span>ネクタイ</span></a>
+
+  
+    <div class="dropdown-menu " role="menu" aria-labelledby="drop3" style="margin-top: 0px;">
+      <div class="nav-categories">
+        <h2 class="Arbutus visible-desktop"><strong>Cateogries</strong></h2>
+        <ul>
+          <li><a href="/shop/giraffe/item/list/category_id/1">すべての商品</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/8">リバーシブル</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/10">カラーチップ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/9">クレリック</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/130">4WAYタイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/128">タイピンセット</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/7">スタンダード</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/127">パッチワークタイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/129">ニットタイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/131">3本タイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/11">その他</a></li>
+</ul><ul class="box-right"><li><a href="/shop/giraffe/item/list/category_id/152">残りわずか</a></li>
+        </ul>
+      </div>
+      <div class="nav-img  visible-desktop">
+        <h2 class="Arbutus"><strong>Recommend</strong></h2>
+        <a href="/shop/giraffe/item/view/shop_product_id/1660" class="_hover"><img src="/sysimg/product/BMT2115A/BMT2115A_main_125x160.jpg">
+        <p class="nav-detail">リバーシブルチェック千鳥ドットタイ　NAVY×ORANGE<br></p>
+        </a>
+      </div>
+    </div>
+  </li>
+  
+  <li class="dropdown pulldown04  clickable "><a id="drop4" href="/shop/giraffe/item/list/category_id/2"><div class="Arbutus">Bowtie</div><span>蝶ネクタイ</span></a>
+    </li>
+
+  <li class="dropdown pulldown05  clickable "><a id="drop5" href="/shop/giraffe/item/list/category_id/5"><div class="Arbutus">Shirts</div><span>シャツ</span></a>
+    </li>
+  
+  <li class="dropdown pulldown06  clickable  active"><a id="drop6" href="/shop/giraffe/item/list/category_id/3" role="button" class="dropdown-toggle" data-toggle="dropdown"><div class="Arbutus">Accessories</div><span>アクセサリー</span></a>
+      <div class="dropdown-menu " role="menu" aria-labelledby="drop6" style="margin-top: 0px;">
+      <div class="nav-categories">
+        <h2 class="Arbutus visible-desktop"><strong>Cateogries</strong></h2>
+        <ul>
+          <li class="active"><a href="/shop/giraffe/item/list/category_id/3">すべての商品</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/12">ネクタイピン</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/150">カフス</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/157">袱紗</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/13">チーフ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/25">ロゼット</a></li>
+        </ul>
+      </div>
+      <div class="nav-img  visible-desktop">
+        <h2 class="Arbutus"><strong>Recommend</strong></h2>
+        <a href="/shop/giraffe/item/view/shop_product_id/183" class="_hover"><img src="/sysimg/product/PMP0613S/PMP0613S_main_125x160.jpg">
+        <p class="nav-detail">ジラフタイピン　BEIGE<br></p>
+        </a>
+      </div>
+    </div>
+  </li>
+
+  <li class="dropdown pulldown07  clickable "><a id="drop7" href="/item/search/id/search/name/search?keyword=ギフト"><div class="Arbutus">Gift</div><span>ギフト</span></a></li>
+
+
+  <li class="dropdown pulldown08 visible-phone  clickable "><a id="drop8" href="/item/search/id/search/name/search?keyword=ギフトセット"><div class="Arbutus">Giftset</div><span>ギフトセット</span></a>
+    </li>
+
+
+    
+  
+  
+  <li class="dropdown pulldown09  clickable"><a id="drop9" href="/sp/giraffe"><span class="Arbutus">giraffe</span><span>とは</span></a></li>
+
+  
+  
+
+
+                  </ul>
+                </li>
+                <!--SMP用-->
+                
+
+
+
+
+  <li class="dropdown pulldown00 hidden-desktop menu-close ">
+    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <img src="/assets/images/icon_sp_menu_close.jpg" alt="">
+    </button>
+  </li>
+
+  <li class="dropdown pulldown01 hidden-desktop "><a id="drop1" href="/item/new_arrival"><div class="Arbutus">New Item</div><span>新製品</span></a></li>
+
+  <li class="dropdown pulldown02 visible-phone hidden-desktop "><a id="drop2" href="/shop/giraffe/item/list/category_id/0"><div class="Arbutus">ALL Item</div><span>全ての商品</span></a></li>
+
+  <li class="dropdown pulldown03 hidden-desktop"><a id="drop3" href="/shop/giraffe/item/list/category_id/1" role="button" class="dropdown-toggle" data-toggle="dropdown"><div class="Arbutus">Necktie</div><span>ネクタイ</span></a>
+
+  
+    <div class="dropdown-menu dropdown-sp-menu" role="menu" aria-labelledby="drop3" style="margin-top: 0px;">
+      <div class="nav-categories">
+        <h2 class="Arbutus visible-desktop"><strong>Cateogries</strong></h2>
+        <ul>
+          <li><a href="/shop/giraffe/item/list/category_id/1">すべての商品</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/8">リバーシブル</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/10">カラーチップ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/9">クレリック</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/130">4WAYタイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/128">タイピンセット</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/7">スタンダード</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/127">パッチワークタイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/129">ニットタイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/131">3本タイ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/11">その他</a></li>
+</ul><ul class="box-right"><li><a href="/shop/giraffe/item/list/category_id/152">残りわずか</a></li>
+        </ul>
+      </div>
+      <div class="nav-img  visible-desktop">
+        <h2 class="Arbutus"><strong>Recommend</strong></h2>
+        <a href="/shop/giraffe/item/view/shop_product_id/1660" class="_hover"><img src="/sysimg/product/BMT2115A/BMT2115A_main_125x160.jpg">
+        <p class="nav-detail">リバーシブルチェック千鳥ドットタイ　NAVY×ORANGE<br></p>
+        </a>
+      </div>
+    </div>
+  </li>
+  
+  <li class="dropdown pulldown04 hidden-desktop  "><a id="drop4" href="/shop/giraffe/item/list/category_id/2"><div class="Arbutus">Bowtie</div><span>蝶ネクタイ</span></a>
+    </li>
+
+  <li class="dropdown pulldown05 hidden-desktop  "><a id="drop5" href="/shop/giraffe/item/list/category_id/5"><div class="Arbutus">Shirts</div><span>シャツ</span></a>
+    </li>
+  
+  <li class="dropdown pulldown06 hidden-desktop   active"><a id="drop6" href="/shop/giraffe/item/list/category_id/3" role="button" class="dropdown-toggle" data-toggle="dropdown"><div class="Arbutus">Accessories</div><span>アクセサリー</span></a>
+      <div class="dropdown-menu dropdown-sp-menu" role="menu" aria-labelledby="drop6" style="margin-top: 0px;">
+      <div class="nav-categories">
+        <h2 class="Arbutus visible-desktop"><strong>Cateogries</strong></h2>
+        <ul>
+          <li class="active"><a href="/shop/giraffe/item/list/category_id/3">すべての商品</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/12">ネクタイピン</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/150">カフス</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/157">袱紗</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/13">チーフ</a></li>
+<li><a href="/shop/giraffe/item/list/category_id/25">ロゼット</a></li>
+        </ul>
+      </div>
+      <div class="nav-img  visible-desktop">
+        <h2 class="Arbutus"><strong>Recommend</strong></h2>
+        <a href="/shop/giraffe/item/view/shop_product_id/183" class="_hover"><img src="/sysimg/product/PMP0613S/PMP0613S_main_125x160.jpg">
+        <p class="nav-detail">ジラフタイピン　BEIGE<br></p>
+        </a>
+      </div>
+    </div>
+  </li>
+
+  <li class="dropdown pulldown07 hidden-desktop  "><a id="drop7" href="/item/search/id/search/name/search?keyword=ギフト"><div class="Arbutus">Gift</div><span>ギフト</span></a></li>
+
+
+  <li class="dropdown pulldown08 visible-phone hidden-desktop  "><a id="drop8" href="/item/search/id/search/name/search?keyword=ギフトセット"><div class="Arbutus">Giftset</div><span>ギフトセット</span></a>
+    </li>
+
+
+    
+  
+  
+  <li class="dropdown pulldown09 hidden-desktop "><a id="drop9" href="/sp/giraffe"><span class="Arbutus">giraffe</span><span>とは</span></a></li>
+
+  
+  
+
+
+                <li class="hidden-desktop">
+                  
+
+
+
+
+  <form class="navbar-form search" method="GET" action="/item/search/id/search/name/search">
+  <input class="span3 search-text" type="text" name="keyword" onblur="if (this.value == '') this.value = 'キーワード検索';" onfocus="if (this.value == 'キーワード検索') this.value = '';" value="キーワード検索">
+    <button type="submit" class="btn btn-primary search-buttom"><img src="/assets/images/icon_search_smp.png" alt=""></button>
+  </form>
+  <a class="btn search-buttom-plus" href="/search">こだわり検索</a>
+                </li>
+              </ul>
+            </div>
+
+          </div><!-- /head-navi -->
+
+        </div><!-- /nav-collapse -->
+        
+        <div class="visible-phone">
+          
+
+
+
+
+<ul class="smp_category_menu">
+  <li class="dropdown pulldown01"><a id="drop1" href="/"><div class="Arbutus_kana">トップ</div></a></li>
+  <li class="dropdown pulldown02">
+        <a id="drop2" href="/login"><div class="Arbutus_kana">ログイン</div></a>
+    </li>
+  <li class="dropdown pulldown03"><a id="drop3" href="/mypage_watch_list"><div class="Arbutus_kana">お気に入り</div></a></li>
+  <li class="dropdown pulldown04"><a id="drop4" href="/recently/index"><div class="Arbutus_kana">閲覧履歴</div></a></li>
+  <li class="dropdown pulldown05"><a id="drop5" href="/cart/index"><div class="Arbutus_kana">カート</div></a></li>
+</ul>
+
+    </div>
+
+        <div id="search_area" class="visible-phone">
+      
+
+
+
+
+  <form class="navbar-form search" method="GET" action="/item/search/id/search/name/search">
+  <input class="span3 search-text" type="text" name="keyword" onblur="if (this.value == '') this.value = 'キーワード検索';" onfocus="if (this.value == 'キーワード検索') this.value = '';" value="キーワード検索">
+    <button type="submit" class="btn btn-primary search-buttom"><img src="/assets/images/icon_search_smp.png" alt=""></button>
+  </form>
+  <a class="btn search-buttom-plus" href="/search">こだわり検索</a>
+    </div>
+                
+       </div>
+
+</body>
+</html>
