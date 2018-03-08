@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 	before_action :correct_user_or_admin, only: [:index, :show, :edit, :update]
   def index
-  	@users = User.all
+  	@users = User.page(params[:page]).per(20)
   	# 論理削除済みユーザーを@deleted_usersとするあ
-  	@deleted_users = User.only_deleted
+  	@deleted_users = User.only_deleted.page(params[:page]).per(20)
   end
 
   def show
