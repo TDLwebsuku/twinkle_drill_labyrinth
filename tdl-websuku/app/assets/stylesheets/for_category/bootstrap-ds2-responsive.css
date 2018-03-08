@@ -1,0 +1,229 @@
+@charset "UTF-8";
+
+/* smatphone only */
+@media only screen and (max-width: 767px) {
+
+  /*==================
+  bootstrap custom
+  ===================*/
+  body{
+    padding-right: 10px; padding-left: 10px;
+  }
+  .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top{
+    margin-right: -10px; margin-left: -10px;
+  }
+  .window-fix{
+    margin-left: -10px !important; margin-right: -10px !important;
+    padding-left: 10px !important; padding-right: 10px !important;
+  }
+
+  /* フォーム */
+  .form-horizontal .control-label{padding-left:0;}
+  .form-horizontal .control-label .label-important{float:none;}
+  .form-horizontal .control-label .label-ttl{display:inline; margin-left:0;}
+  .form-horizontal .controls select{margin-bottom: 10px;}
+  .span12 .top-input{margin-bottom:10px;}/*姓の入力欄*/
+
+  /* ログイン */
+  .login-area-box{width:100%;}
+  .login-area-box .login-area-subbox{height:auto;}
+  .login-area-box .login-area-subbox .control-label{padding-left:0;}
+
+  /* マイページ */
+  .mypage-menu .row-fluid{margin-bottom:0;}
+  .mypage-menu .row-fluid > div{width:50%; float:left;}
+  .mypage-menu .row-fluid > div > .btn{display:none;}
+
+  /* ボタン */
+  .form-actions{text-align:center;}
+  .form-actions .btn{float:none; width:90%; padding:8px 0; margin-top:20px;}
+  .form-actions > .btn:first-child{margin-top:0;}
+
+  /* リスト 商品テキスト部 */
+  .list-item-text{height:100px;}
+
+  /* テーブル変形 一列配置数 */
+  .ribbon ul.row-fluid.liquid-column2 > li,
+  .ribbon ul.row.liquid-column2 > li{width:50%; height:auto !important; float:left;}
+  ul.row-fluid.liquid-column2 > li,
+  ul.row.liquid-column2 > li{width:50%; height:auto !important; float:left;}
+  ul.row-fluid.liquid-column4 > li,
+  ul.row.liquid-column4 > li{width:25%; height:auto !important; float:left;}
+  ul.row-fluid.liquid-column3 > li,
+  ul.row.liquid-column3 > li{width:33.3333%; height:auto !important; float:left;}
+  ul.row-fluid.liquid-column5 > li,
+  ul.row.liquid-column5 > li{width:20%; height:auto !important; float:left;}
+  ul.row-fluid.liquid-column6 > li,
+  ul.row.liquid-column6 > li{width:16.6666%; height:auto !important; float:left;}
+
+
+/*  .ribbon ul.row-fluid.liquid-column2 > li:nth-child(2n-1),
+  .ribbon ul.row.liquid-column2 > li:nth-child(2n-1), */
+  .ribbon ul.row-fluid.liquid-column2 > li.smp_category_area,
+  .ribbon ul.row.liquid-column2 > li.smp_category_area{clear:both;}
+/* ul.row-fluid.liquid-column2 > li:nth-child(2n+1),
+   ul.row.liquid-column2 > li:nth-child(2n+1){clear:both;} */
+
+  /* テーブル変形 */
+  table.liquid-table{border:0;}
+  table.liquid-table th,
+  table.liquid-table td{-moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box;}
+
+  table.liquid-table > thead{display:none;}/***thが上にある場合***/
+  table.liquid-table > tbody > tr > th{width:100%; float:left; padding:3px 0; text-align:left; border:none;}/***thが横にある場合***/
+  table.liquid-table > tbody > tr > td{width:100%; float:left; padding:3px 0; border:none;}
+
+  /***商品情報用テーブル***/
+  table.liquid-table > tbody > tr:first-child > td.item-part{border-top:solid 1px #dddddd;}
+  table.liquid-table > tbody > tr > td.itemprice-part,
+  table.liquid-table > tbody > tr > td.quantity-part,
+  table.liquid-table > tbody > tr > td.total-itemprice-part{/*padding:0 0 0 144px; */text-align:left;}
+  table.liquid-table > tbody > tr > td.itemprice-part .visible-phone,
+  table.liquid-table > tbody > tr > td.quantity-part .visible-phone,
+  table.liquid-table > tbody > tr > td.total-itemprice-part .visible-phone{float:left;}
+  table.liquid-table > tbody > tr > td.total-itemprice-part{padding-bottom:10px; border-bottom:solid 1px #dddddd;}
+  
+  /***カートインデックス用***/
+  table.liquid-table.cart-index > tbody > tr > td.quantity-part span{padding-top:6px;}
+  table.liquid-table.cart-index > tbody > tr > td.quantity-part div{display:inline;}
+  table.liquid-table.cart-index > tbody > tr > td.quantity-part select{display:inline; width:50%; margin-bottom:0;}
+  table.liquid-table.cart-index > tbody > tr > td.total-itemprice-part{ padding-top:10px; margin-top:10px; border-top:dotted 1px #dddddd;}
+  table.liquid-table.cart-index > tbody > tr > td.total-itemprice-part .btn{float:right;}
+
+  /*** 確認画面 合計金額テーブル ***/
+  table.confirm-price-box{width:auto;}
+  table.confirm-price-box td{width:40%;}
+
+  /* 店舗一覧 */
+  #shoplist tbody > tr:nth-child(2n+1) > td, #shoplist tbody > tr:nth-child(2n+1) > th {background-color: #F9F9F9;}
+  #shoplist .table th, #shoplist .table td {line-height: 20px; padding: 8px; text-align: left; vertical-align: top;}
+  #shoplist .table th {display: none;}
+  #shoplist .table th.prefecture {border-top:1px solid #DDDDDD; border-bottom:1px solid #DDDDDD; background:transparent; display:block;}
+  #shoplist .table td {text-align: left;}
+  #shoplist .row-fluid .span5.shop-detail,
+  #shoplist .row-fluid .span5.shop-image {width: 100%;}
+
+  /* ランキング */
+  #salesranking .set1,
+  #salesranking .set2{height:auto !important;}
+  #salesranking .set2 {width: 50%; float:left;}
+  #salesranking .set3 {width: 33%; float:left;}
+
+  /*サイドエリア*/
+  .sidearea .caption,
+  .sidearea .list-category > h2,
+  .sidearea .list-category > ul{margin-left:-10px; margin-right:-10px;}
+
+}
+
+/* smartphone to tablet */
+@media only screen and (max-width: 979px) {
+
+  /*==================
+  header layout
+  ===================*/
+/*  .nav-collapse,.nav-collapse.collapse{height:auto;}*/
+  .navbar-fixed-top,
+  .breadcrumb{margin-bottom: 5px;}
+
+  /*ログイン後のユーザー名*/
+  .login-username{
+    width: 140px;
+  }
+  .login-username .name-body{
+    display: block;
+    width: 120px; float: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align:right;
+  }
+
+  /*==================
+  global navi layout
+  ===================*/
+  body:before{
+    position: fixed; left: -27px; top: 0;  bottom: -999em;
+    content: " ";
+    width: 27px;
+    background: url('../../images/nav-shadow.png') repeat-y 0 0;
+  }
+  .show-navi body:before{left:233px;}
+  .show-navi body{padding-right: 0;}
+  .navbar .btn-navbar{float: left;}
+  .show-navi #wrapper{position: relative; overflow: hidden;}
+
+  /*スライド後のポジション*/
+  .show-navi #page-header,
+  .show-navi #page-footer{
+    position: relative !important; left: 260px;
+  }
+  .show-navi #page-body{
+    background-color: #fff;
+    margin-right: -10px; padding-left: 10px;
+    position: relative !important; left: 250px;
+  }
+
+  /*スライド後のメニュー*/
+  .show-navi .nav-bottom{
+    width: 240px;
+    position: absolute; top: 10px; left: -250px;
+    overflow: visible;
+  }
+  .show-navi .search-text{
+    width: 76%; float: left;
+    margin-right: 5px;
+  }
+
+  /* スマホ用ヘッダーメニュー */
+  .search-wrap li{float:none;}
+
+  /* フォーム 姓の入力欄 */
+  .span9 .top-input{margin-bottom:10px;}
+
+  /* 郵便番号検索ボタン */
+  .post-search-btn{width:100%; margin-top:10px; margin-bottom: 10px;}
+
+  /* 規約系サイドナビ */
+  .affix, .affix-bottom{position:static;}
+  
+  /*商品詳細 再入荷のお知らせ*/
+  .rearrival-mail-form .table th,.rearrival-mail-form .table td {
+    display:block;
+    width:100%;
+    padding: 0;
+  }
+  .rearrival-mail-form .table tbody tr{
+    padding: 5px 10px 5px;
+    display: block;
+  }
+  .rearrival-mail-form .table tbody td span{
+	  display:inline-block;
+	  margin:0 0 0 0;
+  }
+  
+  /*商品詳細 ボタン*/
+  .select_quantity_default .color,
+  .select_quantity_default .color-blank{
+    width:20%;
+  }
+  .select_quantity_default .salse-status{
+    width:40%;
+  }
+  .select_quantity_default .select-quantity,
+  .select_quantity_default .select-blank{
+    width:30%;
+    margin-right:0;
+  }
+  .item_submit_btn_block{
+    display:block;
+    width:auto;
+    text-align:center;
+    margin-top:10px;
+  }
+}
+
+/* tablet only*/
+@media only screen and (min-width:767px) and (max-width: 979px) {
+
+}
