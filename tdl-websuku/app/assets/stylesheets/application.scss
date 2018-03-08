@@ -8511,3 +8511,64 @@ register
 .register-legal-area .form-actions{text-align:center;}
 .register-legal-area .form-actions .btn-primary{float:none; margin-top:20px;}
 .register-legal-area .legal{overflow-x:auto; height:300px;}
+
+/*--------layout用追記*/
+
+#page-header-lay{
+  background: url('bg_header_bar.jpg') repeat-x;
+}
+.container-lay{
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar-static-top-lay .container-lay, .navbar-fixed-top-lay .container-lay, .navbar-fixed-bottom-lay .container-lay {
+    width: 960px;
+}
+#head-bar-lay{
+  height: 93px;
+  width: 960px;
+  padding: 0;
+  margin: 0;
+}
+#h1-logo-pc-lay {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 25px;
+    height: 68px;
+    width: 267px;
+    border: none;
+}
+#h1-logo-pc-lay a {
+    background-position: left top;
+    display: block;
+    height: 68px;
+    width: 267px;
+}
+
+.navbar.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+    margin: auto;
+}
+
+.navbar-lay.navbar-fixed-top-lay .navbar-inner-lay, .navbar-fixed-bottom-lay .navbar-inner-lay {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+    margin: auto;
+}
+
+ul.menu-pc-option {
+    padding: 15px 0 0px;
+}
+
+
+
+
+
+
+
+
+

@@ -10,22 +10,121 @@
 
   <body>
   	<header>
-  		<%= link_to "ロゴ", items_path %> | 
-  		<% if user_signed_in? %>
-  			<%= link_to "マイページ", "/users/#{current_user.id}" %> | 
-        <%= link_to "カート一覧", current_cart %> | 
-  			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        | ようこそ！<%= current_user.last_name %>さん！
-  		<% elsif admin_signed_in? %>
-        <%= link_to "ユーザー一覧", users_index_path %> | 
-        <%= link_to "商品登録", new_item_path %> | 
-  			<%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %> | 
-        管理者<%= current_admin.name %>さんでログインしています。
-  		<% else %>
-  			<%= link_to "新規登録", new_user_registration_path %> | 
-  			<%= link_to "ログイン", new_user_session_path %> | 
-  			<%= link_to "管理者用", new_admin_session_path %>
-  		<% end %>
+ <!--  	<%#= link_to "ロゴ", items_path %> | 
+  		<%# if user_signed_in? %>
+  			<%#= link_to "マイページ", "/users/#{current_user.id}" %> | 
+        <%#= link_to "カート一覧", current_cart %> | 
+  			<%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        | ようこそ！<%#= current_user.last_name %>さん！
+  		<%# elsif admin_signed_in? %>
+        <%#= link_to "ユーザー一覧", users_index_path %> | 
+        <%#= link_to "商品登録", new_item_path %> | 
+  			<%#= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %> | 
+        管理者<%#= current_admin.name %>さんでログインしています。
+  		<%# else %>
+  			<%#= link_to "新規登録", new_user_registration_path %> | 
+  			<%#= link_to "ログイン", new_user_session_path %> | 
+  			<%#= link_to "管理者用", new_admin_session_path %>
+  		<%# end %> -->
+
+  <!-- ここから追記 -->
+
+  <div class="navbar-lay navbar-fixed-top-lay" id="page-header-lay">
+    <div class="navbar-inner-lay">
+      <div class="container-lay">
+        <div id="head-bar-lay">
+          <h1 id="h1-logo-pc-lay">
+            <a href=""><img src="logo.jpg" alt="ロゴ"></a>
+
+          </h1>
+
+        <div class="utility-nav-box visible-desktop">
+          <ul class="inline utility-nav menu-pc-option">
+            <% if user_signed_in? %>            
+                <li class="menu-login ie-br">
+                <%= link_to "マイページ", "/users/#{current_user.id}" %> |
+                <img src="icon_user.png">
+                </li>
+                <li class="menu-login ie-br">
+                <%= link_to "カート一覧", current_cart %> | 
+                <img src="icon_key.png">
+                </li>
+                <li class="menu-login ie-br">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <img src="icon_user.png">
+                | ようこそ！<%= current_user.last_name %>さん！
+                </li>
+            <% elsif admin_signed_in? %>
+                <li class="menu-login ie-br">
+                <%= link_to "ユーザー一覧", users_index_path %> |
+                <img src="icon_user.png">
+                </li>
+                <li class="menu-login ie-br">
+                <%= link_to "商品登録", new_item_path %> | 
+                <img src="icon_key.png">
+                </li>
+                <li class="menu-login ie-br">
+                <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %> | 
+                <img src="icon_user.png">
+                管理者<%= current_admin.name %>さんでログインしています。
+                </li>
+            <% else %>
+                <li class="menu-login ie-br">
+                <a href=" /users/sign_up">新規会員登録</a>
+                <img src="icon_user.png">
+                </li>
+                <li class="menu-login ie-br">
+                <a href=" /users/sign_in">ログイン</a>
+                <img src="icon_key.png">
+                </li>
+                <li class="menu-login ie-br">
+                <a href=" /admins/sign_in">管理者用</a>
+                <img src="icon_user.png">
+            <% end %>
+
+
+
+
+
+            <li class="menu-search">
+              <ul class="search-wrap unstyled">
+                <li class="menu-search-form">
+                  <form class="navbar-form search" method="GET" action="/item/search/id/search/name/search">
+                    <input class="span3 search-text" type="text" name="keyword" onBlur="if (this.value == '') this.value = 'キーワード検索';" onFocus="if (this.value == 'キーワード検索') this.value = '';" value="キーワード検索">
+                    <button type="submit" class="btn btn-primary search-buttom">
+                      <img src="/assets/images/icon_search.jpg" alt="" class="hiddne-phone">
+            <img src="/assets/images/icon_search_smp.png" alt="" class="visible-phone">
+                    </button>
+                  </form>
+                </li>
+                <li class="menu-search-button">
+                  <div class="refine-search">
+                    <a class="btn search-buttom-plus" href="/search">
+                      <img onMouseOver="document.all.item('moji2').style.visibility='visible'" onMouseOut="document.all.item('moji2').style.visibility='hidden'" src="/assets/images/icon_plus.jpg" alt="">
+                    </a>
+                   
+                  </div>
+              </li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+
+
+
+
+
+
   	</header>
     <%= yield %>
   </body>
