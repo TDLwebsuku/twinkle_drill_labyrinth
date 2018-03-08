@@ -1,12 +1,51 @@
-<h2>ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <p>メールアドレス</p>
-    <%= f.email_field :email %>
-
-  <p>パスワード</p>
-    <%= f.password_field :password %>
-
-  <%= f.submit "ログイン" %>
-<% end %>
+<div id="wrapper">
+	<div class="container body" id="page-body">
+		<div class="row">
+			<div class="span12">
+				<h1 class="Arbutus"><strong>Login</strong></h1>
+				<div class="lead">
+					<p>会員登録がお済みの方は、お手持ちのメールアドレスでログインしてください。<br>
+					会員登録がおすみでない方は、会員登録をお願いします。</p>
+				</div>
+				<%= form_for(resource, as: resource_name, url: session_path(resource_name), id: "f1", class: "form-horizontal") do |f| %>
+					<div class="row">
+						<div class="span6">
+							<div class="login-area-box">
+								<h2>ログイン</h2>
+								<div class="login-area-subbox">
+									<div class="control-group">
+										<label class="control-label">メールアドレス</label>
+										<div class="controls">
+									  	<%= f.email_field :email, id: "LoginID", class: "input_id span3" %>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">
+										パスワード</label>
+										<div class="controls">
+								    	<%= f.password_field :password, class: "input_password span3" %>
+								  	</div>
+								 	</div>
+								</div>
+								<div class="form-actions">
+							  	<%= f.submit "ログイン", class: "btn btn-primary" %>
+								</div>
+							</div>
+						</div>		
+						<div class="span6">
+							<div class="login-area-box">
+								<h2>会員登録</h2>
+								<div class="login-area-subbox">
+									<p>商品をご購入いただくには会員登録が必要です。<br>会員登録は無料で出来ます。<br>一度ご登録していただきますと、ご注文の際にお名前・ご住所などの入力が不要になり安全かつ簡単にご利用いただけます。</p>
+								</div>
+								<div class="form-actions">
+									<%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-primary" %>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
