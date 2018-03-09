@@ -20,8 +20,7 @@
                     <% if user_signed_in? %>
                       ようこそ！<%= current_user.last_name %>さん！
                       <li class="menu-price ie-br">
-                        <span><%#= current_user.cart.cart_items.count %>点</span>
-                        <%= link_to "#{total_price}円", current_cart %>
+                        <%= link_to "カート一覧", current_cart %>
                       </li>
                       <li class="menu-login ie-br">
                         <%= link_to "マイページ", "/users/#{current_user.id}" %>

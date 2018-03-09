@@ -1,64 +1,61 @@
 <% provide(:title, "商品詳細") %>
-<p>
-  <strong>Item name:</strong>
-  <%= @item.item_name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Artist name:</strong>
-  <%= @item.artist_name %>
-</p>
-
-<p>
-  <%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg' %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @item.category %>
-</p>
-
-<p>
-  <strong>Label:</strong>
-  <%= @item.label %>
-</p>
-
-<p>
-  <strong>Genres:</strong>
-  <%= @item.genres %>
-</p>
-
-<p>
-  <strong>Tracklists:</strong>
-  <% @item.track_lists.each do |track_list| %>
-    <%= track_list.track_name %>
+<div class="container body" id="page-body">
+  <div id="view" class="clearfix row-fluid">
+    <div id="item-image" class="span12">
+      <figure id="main-item" class="visible-desktop">
+        <%= attachment_image_tag @item, :item_image, :fill, 650, 650, format: 'jpeg', id: "mainPhoto" %>
+      </figure>
+    </div>
+    <div id="item-detail" class="span12">
+      <div class="visible-desktop ratio-pc-40 pc-fl">
+        <h1><%= @item.item_name %></h1>
+        <p class="price"><%= @item.price %>円</p>
+      </div>
+      <div class="ratio-pc-60 pc-fr">
+        <% if @item.stock == 0 %>
+          <strong>在庫切れ！</strong>
+        <% else %>
+          <strong>販売中</strong>
+          <% if user_signed_in? %>
+            <%= form_tag('/add_item', method: 'post') do %>
+              <div><%= hidden_field_tag :item_id, @item.id %></div>
+              <div><%= number_field_tag :count, nil, in: 0..@item.stock %>個</div>
+              <%= submit_tag "カートに追加", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <article class="item_description_block ratio-pc-100">
+        <div class="ratio-pc-40 pc-fl">
+          <table class="table table-striped">
+            <tbody>
+              <tr class="odd">
+                <td>アーティスト名</td>
+                <td><%= @item.artist_name %></td>
+              </tr>
+              <tr class="even">
+                <td>カテゴリ</td>
+                <td><%= @item.category %></td>
+              </tr>
+              <tr class="odd">
+                <td>レーベル</td>
+                <td><%= @item.label %></td>
+              </tr>
+              <tr class="even">
+                <td>ジャンル</td>
+                <td><%= @item.genres %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <strong>Tracklists:</strong>
+        <% @item.track_lists.each do |track_list| %>
+          <%= track_list.track_name %>
+        <% end %>
+      </article>
+    </div>
+  </div>
+  <% if admin_signed_in? %>
+    <%= link_to '編集', edit_item_path(@item) %> |
   <% end %>
-</p>
-<p>
-  <strong>Stock:</strong>
-  <% if @item.stock == 0 %>
-    <strong>在庫切れ！</strong>
-  <% else %>
-    <%= @item.stock %>
-    <% if user_signed_in? %>
-      <%= form_tag('/add_item', method: 'post') do %>
-        <div><%= hidden_field_tag :item_id, @item.id %></div>
-        <div><%= number_field_tag :count, nil, in: 0..@item.stock %>個</div>
-        <%= submit_tag "カートに追加" %>
-      <% end %>
-    <% end %>
-  <% end %>
-
-</p>
-
-
-
-<% if admin_signed_in? %>
-  <%= link_to 'Edit', edit_item_path(@item) %> |
-<% end %>
-  <%= link_to 'Back', items_path %>
+</div>
