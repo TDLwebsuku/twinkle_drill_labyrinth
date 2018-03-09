@@ -1,4 +1,5 @@
 <% provide(:title, "商品詳細") %>
+<<<<<<< HEAD
 <p id="notice"><%= notice %></p>
 
 <div class="pricing-header col-md-8 mx-auto text-center">
@@ -30,6 +31,60 @@
               </div>
           </div>
         <% end %>
+=======
+<p>
+  <strong>Item name:</strong>
+  <%= @item.item_name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Artist name:</strong>
+  <%= @item.artist_name %>
+</p>
+
+<p>
+  <%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg' %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @item.category %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @item.label %>
+</p>
+
+<p>
+  <strong>Genres:</strong>
+  <%= @item.genres %>
+</p>
+
+<p>
+  <strong>Tracklists:</strong>
+  <% @item.track_lists.each do |track_list| %>
+    <%= track_list.track_name %>
+  <% end %>
+</p>
+<p>
+  <strong>Stock:</strong>
+  <% if @item.stock == 0 %>
+    <strong>在庫切れ！</strong>
+  <% else %>
+    <%= @item.stock %>
+    <% if user_signed_in? %>
+      <%= form_tag('/add_item', method: 'post') do %>
+        <div><%= hidden_field_tag :item_id, @item.id %></div>
+        <div><%= number_field_tag :count, nil, in: 0..@item.stock %>個</div>
+        <%= submit_tag "カートに追加" %>
+      <% end %>
+>>>>>>> 4cb1323d3cdabcc55e834567c19a49700874fcc4
     <% end %>
   <% end %>
 

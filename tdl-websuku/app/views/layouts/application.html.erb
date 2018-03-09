@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+<<<<<<< HEAD
   	
     <header>
     
@@ -37,6 +38,26 @@
   	 
      </header>
     
+=======
+  	<header>
+  		<%= link_to "ロゴ", items_path %> | 
+  		<% if user_signed_in? %>
+  			<%= link_to "マイページ", "/users/#{current_user.id}" %> | 
+        <%= link_to "カート一覧", current_cart %> | 
+  			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        | ようこそ！<%= current_user.last_name %>さん！
+  		<% elsif admin_signed_in? %>
+        <%= link_to "ユーザー一覧", users_index_path %> | 
+        <%= link_to "商品登録", new_item_path %> | 
+  			<%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %> | 
+        管理者<%= current_admin.name %>さんでログインしています。
+  		<% else %>
+  			<%= link_to "新規登録", new_user_registration_path %> | 
+  			<%= link_to "ログイン", new_user_session_path %> | 
+  			<%= link_to "管理者用", new_admin_session_path %>
+  		<% end %>
+  	</header>
+>>>>>>> 4cb1323d3cdabcc55e834567c19a49700874fcc4
     <%= yield %>
   </body>
 </html>
