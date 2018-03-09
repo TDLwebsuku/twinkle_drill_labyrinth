@@ -1,5 +1,4 @@
 <% provide(:title, "商品詳細") %>
-<<<<<<< HEAD
 <p id="notice"><%= notice %></p>
 
 <div class="pricing-header col-md-8 mx-auto text-center">
@@ -31,7 +30,6 @@
               </div>
           </div>
         <% end %>
-=======
 <p>
   <strong>Item name:</strong>
   <%= @item.item_name %>
@@ -84,7 +82,6 @@
         <div><%= number_field_tag :count, nil, in: 0..@item.stock %>個</div>
         <%= submit_tag "カートに追加" %>
       <% end %>
->>>>>>> 4cb1323d3cdabcc55e834567c19a49700874fcc4
     <% end %>
   <% end %>
 
