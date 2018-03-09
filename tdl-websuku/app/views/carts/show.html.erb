@@ -1,42 +1,40 @@
 <% provide(:title, "カート") %>
-<h1>ショッピングカート</h1>
-<% if @cart_items.present? %>
-	<table>
-		<tbody>
-			<thead>
-				<th>画像</th>
-				<th>商品名</th>
-				<th>個数</th>
-				<th>金額</th>
-				<th>削除ボタン</th>
-			</thead>
-			<tr>
-				<% @cart_items.each do |cart_item| %>
-					<td><%= attachment_image_tag cart_item.item, :item_image, :fill, 300, 300, format: 'jpeg' %></td>
-					<td><%= cart_item.item.item_name %></td>
-					<td><%= cart_item.count %>個
-						<div>
-							<%= form_tag('/update_item') do %>
-								<%= hidden_field_tag :item_id, cart_item.item_id %>
-								<%= hidden_field_tag :cart_id, cart_item.cart_id %>
-								<%= number_field_tag :count %>
-								<%= submit_tag "個数を変更" %>
-							<% end %>
-						</div>
-					</td>
-					<td><%= cart_item.item.price %>円</td>
-					<td><%= link_to "カートから削除する", cart_item_path, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
-				<% end %>
-			</tr>
-		</tbody>
-	</table>
-	<h2>合計金額：<%= total_price %>円</h2>
-	<%= form_tag('/confirm_order', method: 'post') do %>
-		<% @cart_items.each do |cart_item| %>
-			<%= hidden_field_tag 'cart_item_id[]', cart_item.id %>
+  <h1 class="Arbutus title_spacer">
+    <strong>カート内商品一覧</strong>
+  </h1>
+
+ <div class="list-item-text" style="font-size: 20px;">
+  <% if @cart_items.present? %>
+  	<% @cart_items.each do |cart_item| %>
+      <figure style="text-align: center;">
+				<%= attachment_image_tag cart_item.item, :item_image, :fill, 650, 650, format: 'jpeg' %>
+			</figure>
+     	<div class="list-item-text">
+        <div class="item-ttl">
+              商品名：<%= cart_item.item.item_name %></div>
+         <div class="item-ttl">
+              購入枚数：<%= cart_item.count %>個
+            <%= form_tag('/update_item') do %>
+							<%= hidden_field_tag :item_id, cart_item.item_id %>
+							<%= hidden_field_tag :cart_id, cart_item.cart_id %>
+							<%= number_field_tag :count %>
+							<%= submit_tag "個数を変更" %>
+						<% end %>
+					</div>
+          <div class="item-ttl">
+              金額：<%= cart_item.item.price %>円</div>
+          <div class="item-ttl">
+            	合計金額：<%= total_price %>円</div>
+					<div class="item-ttl">
+							<%= link_to "カートから削除する", cart_item_path, method: :delete, data: { confirm: "本当に削除しますか？" } %></div>
+				</div>
+			<% end %>
+    <% else %>
+			<p>まだカートに入れた商品はございません</p>
 		<% end %>
-		<%= submit_tag "購入画面に進む" %>
-	<% end %>
-<% else %>
-	<p>まだカートに入れた商品はございません</p>
-<% end %>
+		<%= form_tag('/confirm_order', method: 'post') do %>
+			<% @cart_items.each do |cart_item| %>
+				<%= hidden_field_tag 'cart_item_id[]', cart_item.id %>
+			<% end %>
+			<%= submit_tag "購入画面に進む" %>
+		<% end %>
