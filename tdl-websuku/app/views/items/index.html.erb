@@ -2,7 +2,7 @@
  <html lang="ja">
   <head>
 
-<title>ネクタイピン、ロゼット、 ループタイなど取り揃え｜ ジラフ公式通販 ギフト・プレゼント向けネクタイ＆ネクタイピンを取り揃え</title>
+<title>tdl-cd-shop</title>
 
 <!-- 足しました　-->
 
@@ -11,8 +11,6 @@
 <%= stylesheet_link_tag "for_category/bootstrap-responsive", :media => "all" %>
 <%= stylesheet_link_tag "for_category/bootstrap-ds2", :media => "all" %>
 <%= stylesheet_link_tag "for_category/bootstrap-ds2-responsive", :media => "all" %>
-<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
-
 <!-- -->
 
 </head>
@@ -25,47 +23,6 @@
   <div class="navbar navbar-fixed-top" id="page-header">
     <div class="navbar-inner">
       <div class="container">
-
-      <div id="head-bar">
-        <!--ブランドロゴ-->
-                <h1 id="h1-logo-pc">
-                    <a class="" href="/">
-                                                        
-                    </a>
-        </h1>
-                <!--ログイン名-->
-        <div class="utility-nav-box visible-desktop">
-          <ul class="inline utility-nav menu-pc-option">
-             
-            <li class="menu-search">
-              <ul class="search-wrap unstyled">
-<!-- 検索　-->
-
-               <!--  <li class="menu-search-form">
-                  <form class="navbar-form search" method="GET" action="/item/search/id/search/name/search">
-                    <input class="span3 search-text" type="text" name="keyword" onBlur="if (this.value == '') this.value = 'キーワード検索';" onFocus="if (this.value == 'キーワード検索') this.value = '';" value="キーワード検索">
-                    <button type="submit" class="btn btn-primary search-buttom">
-                      <img src="/assets/images/icon_search.jpg" alt="" class="hiddne-phone">
-            <img src="/assets/images/icon_search_smp.png" alt="" class="visible-phone">
-                    </button>
-                  </form>
-                </li> -->
-            <!--     <li class="menu-search-button">
-                  <div class="refine-search">
-                    <a class="btn search-buttom-plus" href="/search">
-                      <img onMouseOver="document.all.item('moji2').style.visibility='visible'" onMouseOut="document.all.item('moji2').style.visibility='hidden'" src="/assets/images/icon_plus.jpg" alt="">
-                    </a>
-                    <span id="moji2">詳細検索ができます</span>
-                  </div>
-              </li> -->
-              </ul>
-            </li>
-
-          </ul>
-        </div>
-                <!--SMP用ヘッダーメニュー-->
-    
-      </div><!-- /head-bar -->
 
         <div class="nav-collapse collapse nav-bottom">
           <!--グローバルナビ-->
@@ -318,61 +275,6 @@ $(document).ready(function(){
 
 <!--アイテム一覧-->
 <div class="item_main_wrap clearfix">
-   <div class="sort">
-      <div class="visible-phone category_menu">
-          <select name="category_id" class="sortChange" id="category_id" onchange="if(this.selectedIndex&gt;0) window.location.href = options[this.selectedIndex].value;">
-              <option selected="" value="hidden">カテゴリーから探す</option>
-              <option value="/shop/giraffe/item/list/category_id/3">すべての商品</option>
-              <option value="/shop/giraffe/item/list/category_id/12">ネクタイピン</option>
-              <option value="/shop/giraffe/item/list/category_id/13">チーフ</option>
-              <option value="/shop/giraffe/item/list/category_id/14">レディースアクセサリー</option>
-              <option value="/shop/giraffe/item/list/category_id/25">ロゼット</option>
-          </select>
-      </div>
-      <div class="ItemCount">
-        <span>43</span>Items
-      </div>
-
-      <form>
-      <table>
-        <tr>
-          <td class="itemsPerPage">
-            <label>表示件数：</label>
-              <select name="limit" class="changeLimit" id="limit" onChange="change_limit(this, '/shop/giraffe/item/list/category_id/3');">
-          <option value="30" selected>30件</option>
-          <option value="60" >60件</option>
-          <option value="90" >90件</option>
-      </select>
-
-
-          </td>
-          <td class="stock">
-            <label>在庫の有無：</label>
-            
-<select name="limit" class="stockChange" id="limit" onChange="change_available(this, '/shop/giraffe/item/list/category_id/3');">
-  <option value="all" selected>全てのアイテム</option>
-  <option value="1" >在庫あり</option>
-</select>
-          </td>
-          <td class="displayOrder">
-            <label>表示順：</label>
-            
-<select name="limit" class="sortChange" id="limit" onchange="if(this.selectedIndex>0) window.location.href = options[this.selectedIndex].value;">
-  <option selected value="hidden">選択して下さい</option>
-  <option value="/shop/giraffe/item/list/category_id/3/limit/30/sort/start_date_down" >新着順</option>
-  <option value="/shop/giraffe/item/list/category_id/3/limit/30/sort/price_down" >価格の高い順</option>
-  <option value="/shop/giraffe/item/list/category_id/3/limit/30/sort/price_up" >価格の安い順</option>
-</select>
-
-          </td>
-        </tr>
-      </table>
-      </form>
-
-
-
-    </div>
-
     
   <div class="pager">
     <!--
