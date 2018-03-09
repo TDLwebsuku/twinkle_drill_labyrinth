@@ -1,0 +1,40 @@
+<div id="wrapper">
+  <div class="container body" id="page-body">
+    <div class="row">
+      <div class="span12">
+        <h1 class="Arbutus"><strong>Admin_Login</strong></h1>
+        <div class="lead">
+          <p>管理者用メールアドレスとパスワードでログインしてください。<br>
+          会員様は通常のログインページでログインして下さい。</p>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal") do |f| %>
+          <div class="row">
+            <div class="span6">
+              <div class="login-area-box">
+                <h2>管理者ログイン</h2>
+                <div class="login-area-subbox">
+                  <div class="control-group">
+                    <label class="control-label">メールアドレス</label>
+                    <div class="controls">
+                      <%= f.email_field :email, id: "LoginID", class: "input_id span3" %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">
+                    パスワード</label>
+                    <div class="controls">
+                      <%= f.password_field :password, class: "input_password span3" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <%= f.submit "ログイン", class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

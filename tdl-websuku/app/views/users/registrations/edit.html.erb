@@ -1,88 +1,204 @@
 <% provide(:title, "会員情報編集") %>
-<h2>会員情報の編集</h2>
-<% if admin_signed_in? %>
-  <%= form_for(User.find_by(id: params[:user_id]), as: :user, url: registration_path(:user), html: { method: :put }) do |f| %>
-
-  <p>性</p>
-    <%= f.text_field :last_name, placeholder: "" %>
-
-  <p>性（カナ）</p>
-    <%= f.text_field :last_name_kana, placeholder: "" %>
-
-  <p>名</p>
-    <%= f.text_field :first_name, placeholder: "" %>
-
-  <p>名（かな）</p>
-    <%= f.text_field :first_name_kana, placeholder: "" %>
-
-  <p>メールアドレス</p>
-    <%= f.email_field :email, placeholder: "" %>
-
-  <p>郵便番号</p>
-    <%= f.text_field :zip_code, placeholder: "" %>
-
-  <p>住所</p>
-    <%= f.text_field :address, placeholder: "" %>
-
-  <p>電話番号</p>
-    <%= f.text_field :phone_number, placeholder: "" %>
-
-  <p>新しいパスワード</p>
-    <%= f.password_field :password, placeholder: "6文字以上で入力してください" %>
-
-  <p>新しいパスワード（確認）</p>
-    <%= f.password_field :password_confirmation, placeholder: "6文字以上で入力してください" %>
-
-  <p>現在のパスワード</p>
-  <%= f.password_field :current_password, autocomplete: "off", placeholder: "現在のパスワードを入力してください" %>
-
-  <%= hidden_field_tag :user_id, User.find_by(id: params[:user_id]).id %>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
+<div id="wrapper">
+  <div class="container body" id="page-body">
+    <div class="row">
+      <div class="span12">
+        <h1 class="Arbutus title_spacer">
+          <strong>Edit Account</strong>
+        </h1>
+        <% if admin_signed_in? %>
+          <%= form_for(User.find_by(id: params[:user_id]), as: :user, url: registration_path(:user), html: { method: :put }, class: "form-horizontal") do |f| %>
+            <div class="form-striped">
+              <div class="control-group">
+                <label class="control-label">
+                  <span class="label-ttl">性</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :last_name, placeholder: "" %></div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">
+                  <span class="label-ttl">性（カナ）</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :last_name_kana, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">
+                  <span class="label-ttl">名</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :first_name, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">名（かな）</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :first_name_kana, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">メールアドレス</span>
+                </label>
+                <div class="controls">
+                  <%= f.email_field :email, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">郵便番号</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :zip_code, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">住所</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :address, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">電話番号</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :phone_number, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">パスワード</span>
+                </label>
+                <div class="controls">
+                  <%= f.password_field :password, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">パスワード（確認）</span>
+                </label>
+                <div class="controls">
+                  <%= f.password_field :password_confirmation, placeholder: "" %>
+                </div>
+                <div class="controls">
+                   <%= f.password_field :current_password, autocomplete: "off", placeholder: "現在のパスワードを入力してください" %>
+                 </div>
+              </div>
+              <%= hidden_field_tag :user_id, User.find_by(id: params[:user_id]).id %>
+            </div>
+            <div class="form-actions">
+              <div>
+                <%= f.submit "更新", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        <% elsif user_signed_in? %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "form-horizontal") do |f| %>
+            <div class="form-striped">
+              <div class="control-group">
+                <label class="control-label">
+                  <span class="label-ttl">性</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :last_name, placeholder: "" %></div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">
+                  <span class="label-ttl">性（カナ）</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :last_name_kana, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">
+                  <span class="label-ttl">名</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :first_name, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">名（かな）</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :first_name_kana, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">メールアドレス</span>
+                </label>
+                <div class="controls">
+                  <%= f.email_field :email, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">郵便番号</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :zip_code, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">住所</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :address, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">電話番号</span>
+                </label>
+                <div class="controls">
+                  <%= f.text_field :phone_number, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">パスワード</span>
+                </label>
+                <div class="controls">
+                  <%= f.password_field :password, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">パスワード（確認）</span>
+                </label>
+                <div class="controls">
+                  <%= f.password_field :password_confirmation, placeholder: "" %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-labels">
+                  <span class="label-ttl">
+                  現在のパスワード</span>
+                </label>
+                <div class="controls">
+                   <%= f.password_field :current_password, autocomplete: "off", placeholder: "現在のパスワードを入力してください" %>
+                 </div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <div>
+                <%= f.submit "更新", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-<% elsif user_signed_in? %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
-  <p>性</p>
-    <%= f.text_field :last_name, placeholder: "" %>
-
-  <p>性（カナ）</p>
-    <%= f.text_field :last_name_kana, placeholder: "" %>
-
-  <p>名</p>
-    <%= f.text_field :first_name, placeholder: "" %>
-
-  <p>名（かな）</p>
-    <%= f.text_field :first_name_kana, placeholder: "" %>
-
-  <p>メールアドレス</p>
-    <%= f.email_field :email, placeholder: "" %>
-
-  <p>郵便番号</p>
-    <%= f.text_field :zip_code, placeholder: "" %>
-
-  <p>住所</p>
-    <%= f.text_field :address, placeholder: "" %>
-
-  <p>電話番号</p>
-    <%= f.text_field :phone_number, placeholder: "" %>
-
-  <p>新しいパスワード</p>
-    <%= f.password_field :password, placeholder: "6文字以上で入力してください" %>
-
-  <p>新しいパスワード（確認）</p>
-    <%= f.password_field :password_confirmation, placeholder: "6文字以上で入力してください" %>
-
-  <p>現在のパスワード</p>
-  <%= f.password_field :current_password, autocomplete: "off", placeholder: "現在のパスワードを入力してください" %>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<%= link_to "Back", :back %>
-<% end %>
+</div>
