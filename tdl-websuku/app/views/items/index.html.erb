@@ -1,17 +1,13 @@
 <% provide(:title, "商品一覧") %>
-<<<<<<< HEAD
 
 
 <body>
-=======
 <h1>Items</h1>
->>>>>>> 4cb1323d3cdabcc55e834567c19a49700874fcc4
 <%= search_form_for @search do |f| %>
   <div class="form-group col-md-6">
     <%= f.label :item_name_cont, "商品検索" %>
     <%= f.text_field :item_name_cont, class: "form-control" %>
   </div>
-<<<<<<< HEAD
   <div class="actions"><%= f.submit "Search", class: "btn btn-success" %></div>
 　<% end %>
  
@@ -57,7 +53,6 @@
           <td><%= link_to 'New Item', new_item_path %></td>
         <% end %>
 </body>
-=======
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
@@ -96,4 +91,3 @@
     <% end %>
   </tbody>
 </table>
->>>>>>> 4cb1323d3cdabcc55e834567c19a49700874fcc4
