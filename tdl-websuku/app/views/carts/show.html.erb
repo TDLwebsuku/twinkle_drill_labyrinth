@@ -1,41 +1,72 @@
-<h1>ショッピングカート</h1>
-<% if @cart_items.present? %>
-	<table>
-		<tbody>
-			<thead>
-				<th>画像</th>
-				<th>商品名</th>
-				<th>個数</th>
-				<th>金額</th>
-				<th>削除ボタン</th>
-			</thead>
-			<tr>
+<style>
+	* {
+		margin: 0 auto;
+		box-sizing: border-box;
+		list-style: none;
+		margin: 0;
+    	padding: 0;
+    	border: 0;
+    	font-size: 100%;
+    	font: inherit;
+    	vertical-align: baseline;
+	}
+
+	body {
+		width: 100%;
+	}
+
+	h4 {
+		width: 600px;
+    	margin: 100px auto;
+    	text-align: center;
+    	font-weight: normal;
+    	font-size: 35px;
+	}
+</style>
+
+
+		<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		    <h5 class="display-4">ショッピングカート</h5>
+		</div>
+		
+		<div class="col-md-12 text-center">
+			<% if @cart_items.present? %>
 				<% @cart_items.each do |cart_item| %>
-					<td><%= attachment_image_tag cart_item.item, :item_image, :fill, 300, 300, format: 'jpeg' %></td>
-					<td><%= cart_item.item.item_name %></td>
-					<td><%= cart_item.count %>個
-						<div>
+		
+            <div class="card col-md-12">
+                <div class="card-header">
+                　  <h6 class="my-0 font-weight-normal">
+                	<%= cart_item.item.item_name %></h6>
+                </div>
+                
+               
+                  <ul class="list-unstyled mt-3 mb-4">
+						<li><%= attachment_image_tag cart_item.item, :item_image, :fill, 100, 100, format: 'jpeg' %></li>
+						<li><%= cart_item.count %>枚</li>
+							
 							<%= form_tag('/update_item') do %>
-								<%= hidden_field_tag :item_id, cart_item.item_id %>
-								<%= hidden_field_tag :cart_id, cart_item.cart_id %>
-								<%= number_field_tag :count %>
-								<%= submit_tag "個数を変更" %>
-							<% end %>
-						</div>
-					</td>
-					<td><%= cart_item.item.price %>円</td>
-					<td><%= link_to "カートから削除する", cart_item_path, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
-				<% end %>
-			</tr>
-		</tbody>
-	</table>
+							<%= hidden_field_tag :item_id, cart_item.item_id %>
+							<%= hidden_field_tag :cart_id, cart_item.cart_id %>
+						<li><%= number_field_tag :count %></li>
+						<li><%= submit_tag "個数を変更", :class => "btn btn-lg btn-outline-primary" %></li>
+						<% end %>
+						<li><%= cart_item.item.price %>円</li>
+						<li><%= link_to "カートから削除する", cart_item_path, method: :delete, data: { confirm: "本当に削除しますか？" } %></li>				
+						<% end %>
+				  </ul>
+			    </div>
+		    </div>	
+		 </div>  
+			   
+		 
+
 	<h2>合計金額：<%= total_price %>円</h2>
-	<%= form_tag('/confirm_order', method: 'post') do %>
-		<% @cart_items.each do |cart_item| %>
-			<%= hidden_field_tag 'cart_item_id[]', cart_item.id %>
+		<%= form_tag('/confirm_order', method: 'post') do %>
+			<% @cart_items.each do |cart_item| %>
+				<%= hidden_field_tag 'cart_item_id[]', cart_item.id %>
+			<% end %>
+		<%= submit_tag "購入画面に進む", :class => "btn btn-lg btn-outline-primary" %>
 		<% end %>
-		<%= submit_tag "購入画面に進む" %>
-	<% end %>
-<% else %>
-	<p>まだカートに入れた商品はございません</p>
-<% end %>
+		<% else %>
+			<p>まだカートに入れた商品はございません</p>
+		<% end %>

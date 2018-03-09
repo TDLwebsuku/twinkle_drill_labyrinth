@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-<p>
 
-<h1>購入履歴</h1>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h5 class="display-4">購入履歴</h5>
 <h2>購入者：<%= @order.last_name %> <%= @order.first_name %> 様</h2>
 <h2>購入日：<%= @order.updated_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[@order.updated_at.wday]})")  %></h2>
 <h2>合計金額：<%= @order.total_price %>円</h2>

@@ -1,9 +1,35 @@
-<% @order_items.each do |order_item| %>
-  <strong>商品名:</strong><%= order_item.item.item_name %>
-  <strong>数量:</strong><%= order_item.count %>枚
-  <strong>金額:</strong><%= order_item.item.price %>円
-<% end %>
-<strong>合計金額：<%= total_price %>円</strong>
+<style>
+  h4 {
+    width: 600px;
+      margin: 100px auto;
+      text-align: center;
+      font-weight: normal;
+      font-size: 35px;
+  }
+</style>
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h5 class="display-4">購入内容確認</h5>
+    </div>
+    
+    <div class="col-md-12 text-center">
+      <% @order_items.each do |order_item| %>
+
+                <div class="card col-md-12">
+                    <div class="card-header">
+                      　<h6 class="my-0 font-weight-normal">
+                        <%= order_item.item.item_name %></h6>
+                    </div>
+
+                      <ul class="list-unstyled mt-3 mb-4">
+                        <li>数量:<%= order_item.count %>枚</li>
+                        <li>金額:<%= order_item.item.price %>円</li>
+                      <% end %>
+                      </ul>
+                 
+    </div>
+<h2>合計金額：<%= total_price %>円</h2>
+
 <%= form_for @order, url: orders_path, :html => {:method => 'post'} do |f| %>
   <div class="field">
     <p>郵便番号</p>
@@ -16,28 +42,29 @@
   </div>
 
   <div class="field">
-    <p>phone_number</p>
+    <p>電話番号</p>
     <%= f.text_field :phone_number, :value => current_user.phone_number %>
   </div>
 
   <div class="field">
-    <p>last_name</p>
+    <p>姓</p>
     <%= f.text_field :last_name, :value => current_user.last_name %>
   </div>
 
   <div class="field">
-    <p>first_name</p>
+    <p>名</p>
     <%= f.text_field :first_name, :value => current_user.first_name %>
   </div>
 
   <div class="field">
-    <p>last_name_kana</p>
+    <p>セイ</p>
     <%= f.text_field :last_name_kana, :value => current_user.last_name_kana %>
   </div>
 
   <div class="field">
-    <p>first_name_kana</p>
+    <p>メイ</p>
     <%= f.text_field :first_name_kana, :value => current_user.first_name_kana %>
   </div>
-    <%= f.submit "購入を確定する", data: { confirm: "購入を確定します。よろしいですか？"}  %>
+    <%= f.submit "購入を確定する", :class=>"btnbtn-lg btn-outline-primary", data: { confirm: "購入を確定します。よろしいですか？"} %>
+
 <% end %>

@@ -1,54 +1,37 @@
 <% provide(:title, "商品詳細") %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Item name:</strong>
-  <%= @item.item_name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Artist name:</strong>
-  <%= @item.artist_name %>
-</p>
-
-<p>
-  <%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg' %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @item.category %>
-</p>
-
-<p>
-  <strong>Label:</strong>
-  <%= @item.label %>
-</p>
-
-<p>
-  <strong>Stock:</strong>
-  <% if @item.stock == 0 %>
-    <strong>在庫切れ！</strong>
-  <% else %>
-    <%= @item.stock %>
-    <% if user_signed_in? %>
-      <%= form_tag('/add_item', method: 'post') do %>
-        <div><%= hidden_field_tag :item_id, @item.id %></div>
-        <div><%= number_field_tag :count, nil, in: 0..@item.stock %>個</div>
-        <%= submit_tag "カートに追加" %>
-      <% end %>
+<div class="pricing-header col-md-8 mx-auto text-center">
+    <h5 class="display-4">商品詳細</h5>
+    
+          <div class="card col-md-12">
+              <div class="card-header">
+                　<h6 class="my-0 font-weight-normal">
+                    <%= @item.item_name %>
+                  </h6>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li><%= @item.artist_name %></li>
+                  <li><%= attachment_image_tag @item, :item_image, :fill, 250, 250, format: 'jpeg' %></li>
+                  <li>¥<%= @item.price %></li>
+                  <li>カテゴリー：<%= @item.category %></li>
+                  <li>レーベル：<%= @item.label %></li>
+                  <% if @item.stock == 0 %>
+                    <li>在庫切れ！</li>
+                  <% else %>
+                    在庫：<%= @item.stock %>枚
+                  <% if user_signed_in? %>
+                    <%= form_tag('/add_item', method: 'post') do %>
+                    <div><%= hidden_field_tag :item_id, @item.id %></div>
+                    <div><%= number_field_tag :count, nil, in: 0..@item.stock %>枚</div>
+                  <li><%= submit_tag "カートに追加", :class => "btn btn-lg btn-outline-primary" %></li>
+                </ul>
+              </div>
+          </div>
+        <% end %>
     <% end %>
   <% end %>
-
-</p>
-
-
-
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
