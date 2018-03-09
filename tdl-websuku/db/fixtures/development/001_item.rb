@@ -10,7 +10,7 @@
 		item.genres = 1
     item.stock = 100
     item.is_available = 0
-    item.delete_flag = 0
+    # item.delete_flag = 0
     item.item_image = Rails.root.join("public/no_image.jpg").open
 	end
 end
